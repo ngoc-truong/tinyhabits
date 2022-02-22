@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import Lesson from "./Lesson";
 
 const lessons = [
@@ -23,6 +23,51 @@ const lessons = [
   {
     id: "lesson3",
     overline: "Lesson 3",
+    title: "Why is psychology important?",
+    description:
+      "Can psychology and science give you the answer to create long lasting habits?",
+    imageUrl: "",
+    completed: false,
+  },
+  {
+    id: "lesson4",
+    overline: "Lesson 4",
+    title: "Why is psychology important?",
+    description:
+      "Can psychology and science give you the answer to create long lasting habits?",
+    imageUrl: "",
+    completed: false,
+  },
+  {
+    id: "lesson5",
+    overline: "Lesson 5",
+    title: "Why is psychology important?",
+    description:
+      "Can psychology and science give you the answer to create long lasting habits?",
+    imageUrl: "",
+    completed: false,
+  },
+  {
+    id: "lesson6",
+    overline: "Lesson 6",
+    title: "Why is psychology important?",
+    description:
+      "Can psychology and science give you the answer to create long lasting habits?",
+    imageUrl: "",
+    completed: false,
+  },
+  {
+    id: "lesson7",
+    overline: "Lesson 7",
+    title: "Why is psychology important?",
+    description:
+      "Can psychology and science give you the answer to create long lasting habits?",
+    imageUrl: "",
+    completed: false,
+  },
+  {
+    id: "lesson8",
+    overline: "Lesson 8",
     title: "Why is psychology important?",
     description:
       "Can psychology and science give you the answer to create long lasting habits?",
