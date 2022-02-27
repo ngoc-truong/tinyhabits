@@ -1,5 +1,22 @@
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList } from "react-native";
 import Lesson from "./Lesson";
+
+const LessonList = () => {
+  const renderLesson = ({ item }) => {
+    return (
+      <Lesson
+        overline={item.overline}
+        completed={item.completed}
+        title={item.title}
+        description={item.description}
+      />
+    );
+  };
+
+  return <FlatList renderItem={renderLesson} data={lessons} />;
+};
+
+export default LessonList;
 
 const lessons = [
   {
@@ -75,20 +92,3 @@ const lessons = [
     completed: false,
   },
 ];
-
-const LessonList = () => {
-  const renderLesson = ({ item }) => {
-    return (
-      <Lesson
-        overline={item.overline}
-        completed={item.completed}
-        title={item.title}
-        description={item.description}
-      />
-    );
-  };
-
-  return <FlatList renderItem={renderLesson} data={lessons} />;
-};
-
-export default LessonList;

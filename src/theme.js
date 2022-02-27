@@ -1,12 +1,15 @@
 const theme = {
   colors: {
-    primary: "#eb04ff",
-    background: "#344fa1",
-    surface: "#031956",
-    onPrimary: "#37474F",
-    onBackground: "#FFFFFF",
-    onSurface: "#FFFFFF",
-    subheadlineColor: "#7894e3",
+    primary: "#ffdcce",
+    background: "#FEF9F2",
+    background2: "#FFECD0",
+    surface: "#FFFFFF",
+    onPrimary: "#414141",
+    onBackground: "#414141",
+    onSurface: "#414141",
+    onSurface2: "#6B6B6B",
+    subheadlineColor: "#0f0f0f",
+    overline: "#008f77",
     white: "#FFFFFF",
   },
   fontSizes: {
@@ -31,6 +34,7 @@ const theme = {
   },
   fonts: {
     main: "System",
+    custom: "JosefinSans-Regular",
   },
   spacing: {
     small: 4,
