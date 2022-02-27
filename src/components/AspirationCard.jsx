@@ -20,7 +20,7 @@ export default AspirationCard;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.surface,
-    elevation: 6,
+    elevation: 4,
     borderRadius: theme.borderRadius.medium,
     padding: theme.spacing.xlarge,
     textAlign: "center",

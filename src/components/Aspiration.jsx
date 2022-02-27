@@ -3,6 +3,7 @@ import theme from "../theme";
 import AspirationCard from "./AspirationCard";
 import BehaviorCard from "./BehaviorCard";
 import Text from "./Text";
+import Button from "./Button";
 
 const Aspiration = ({ aspiration, onChangeAspiration }) => {
   return (
@@ -18,8 +19,9 @@ const Aspiration = ({ aspiration, onChangeAspiration }) => {
         Think of all behaviors which get you closer to your aspiration.
       </Text>
       <BehaviorCard text="I will program for 20min each day." />
-      <BehaviorCard text="I will program for 20min each day." />
-      <BehaviorCard text="I will program for 20min each day." />
+      <BehaviorCard text="I will ..." />
+      <BehaviorCard text="I will ..." />
+      <Button label="Evaluate behaviors" />
     </View>
   );
 };

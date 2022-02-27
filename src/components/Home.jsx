@@ -2,6 +2,7 @@ import { View, StyleSheet, Pressable } from "react-native";
 import { Link } from "react-router-native";
 import Text from "./Text";
 import AspirationCard from "./AspirationCard";
+import Button from "./Button";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
           <AspirationCard />
         </Link>
       </Pressable>
+      <Button label="Add aspiration" />
     </View>
   );
 };

@@ -71,7 +71,9 @@ const styles = StyleSheet.create({
   },
   button: {
     fontSize: theme.fontSizes.button,
-    fontFamily: "JosefinSans-Bold",
+    fontFamily: "JosefinSans-Regular",
+    textTransform: "uppercase",
+    letterSpacing: 1.1,
   },
   marginSmall: {
     marginBottom: theme.spacing.small,
