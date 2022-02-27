@@ -1,4 +1,5 @@
 import { Text as NativeText, StyleSheet } from "react-native";
+import { normalizeRect } from "react-native/Libraries/StyleSheet/Rect";
 import theme from "../theme";
 
 const Text = ({ category, style, margin, ...props }) => {
@@ -13,7 +14,9 @@ const Text = ({ category, style, margin, ...props }) => {
     category === "button" && styles.button,
     category === "overline" && styles.overline,
     margin === "small" && styles.marginSmall,
+    margin === "medium" && styles.marginMedium,
     margin === "large" && styles.marginLarge,
+    margin === "xlarge" && styles.marginXLarge,
     style,
   ];
 
@@ -28,26 +31,32 @@ const styles = StyleSheet.create({
     fontSize: theme.fontSizes.body,
     fontFamily: "JosefinSans-Regular",
     fontWeight: theme.fontWeights.regular,
+    lineHeight: 20,
   },
   h1: {
     fontSize: theme.fontSizes.h1,
     fontFamily: "JosefinSans-Light",
+    lineHeight: 30,
   },
   h2: {
     fontSize: theme.fontSizes.h2,
     fontFamily: "JosefinSans-Light",
+    lineHeight: 30,
   },
   h3: {
     fontSize: theme.fontSizes.h3,
     fontFamily: "JosefinSans-Bold",
+    lineHeight: 30,
   },
   h4: {
     fontSize: theme.fontSizes.h4,
     fontFamily: "JosefinSans-Bold",
+    lineHeight: 30,
   },
   h5: {
     fontSize: theme.fontSizes.h5,
     fontFamily: "JosefinSans-Bold",
+    lineHeight: 30,
   },
   h6: {
     fontSize: theme.fontSizes.h6,
@@ -55,9 +64,10 @@ const styles = StyleSheet.create({
   },
   overline: {
     fontSize: theme.fontSizes.overline,
-    fontFamily: "JosefinSans-Bold",
+    fontFamily: "JosefinSans-Regular",
     textTransform: "uppercase",
-    color: theme.colors.subheadlineColor,
+    color: theme.colors.overline,
+    letterSpacing: 1.5,
   },
   button: {
     fontSize: theme.fontSizes.button,
@@ -66,7 +76,13 @@ const styles = StyleSheet.create({
   marginSmall: {
     marginBottom: theme.spacing.small,
   },
+  marginMedium: {
+    marginBottom: theme.spacing.medium,
+  },
   marginLarge: {
     marginBottom: theme.spacing.large,
+  },
+  marginXLarge: {
+    marginBottom: theme.spacing.xlarge,
   },
 });

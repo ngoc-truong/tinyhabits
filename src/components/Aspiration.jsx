@@ -1,28 +1,25 @@
-import { View, TextInput, StyleSheet, Pressable } from "react-native";
-import { Link } from "react-router-native";
+import { View, StyleSheet } from "react-native";
 import theme from "../theme";
+import AspirationCard from "./AspirationCard";
+import BehaviorCard from "./BehaviorCard";
 import Text from "./Text";
 
 const Aspiration = ({ aspiration, onChangeAspiration }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headline}>Hello friend, let us dream...</Text>
-        <Text category="h5">What do you want to achieve?</Text>
-      </View>
-      <View style={styles.form}>
-        <Text>I want to...</Text>
-        <TextInput
-          style={styles.inputField}
-          value={aspiration}
-          onChangeText={onChangeAspiration}
-        />
-        <Pressable>
-          <Link to="/behaviors">
-            <Text category="button">Let's make it real</Text>
-          </Link>
-        </Pressable>
-      </View>
+    <View>
+      <Text margin="xlarge" category="h5">
+        Aspiration
+      </Text>
+      <AspirationCard />
+      <Text margin="medium" category="h5">
+        Behaviors
+      </Text>
+      <Text margin="xlarge">
+        Think of all behaviors which get you closer to your aspiration.
+      </Text>
+      <BehaviorCard text="I will program for 20min each day." />
+      <BehaviorCard text="I will program for 20min each day." />
+      <BehaviorCard text="I will program for 20min each day." />
     </View>
   );
 };

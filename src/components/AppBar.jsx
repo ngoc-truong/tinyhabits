@@ -1,16 +1,13 @@
-import { View, ScrollView, Pressable } from "react-native";
-import { Link } from "react-router-native";
-import Text from "./Text";
+import { View, ScrollView } from "react-native";
+import AppTab from "./AppTab";
 
 const AppBar = () => {
   return (
     <View>
       <ScrollView horizontal>
-        <Pressable>
-          <Link to="/aspiration">
-            <Text>Aspiration</Text>
-          </Link>
-        </Pressable>
+        <AppTab link="/" label="Home"></AppTab>
+        <AppTab link="/aspiration" label="Aspiration"></AppTab>
+        <AppTab link="/behaviors" label="Behaviors"></AppTab>
       </ScrollView>
     </View>
   );

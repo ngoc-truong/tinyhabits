@@ -34,12 +34,13 @@ const theme = {
   },
   fonts: {
     main: "System",
-    custom: "JosefinSans-Regular",
   },
   spacing: {
-    small: 4,
-    medium: 8,
+    small: 8,
+    medium: 12,
     large: 16,
+    xlarge: 24,
+    xxlarge: 36,
   },
   borderRadius: {
     small: 8,

@@ -1,19 +1,20 @@
 import { StyleSheet, SafeAreaView, Text } from "react-native";
 import { Route, Routes, Navigate } from "react-router-native";
-import Constants from "expo-constants";
-import theme from "../theme";
-import Aspiration from "./Aspiration";
-import LessonList from "./LessonList";
-import Behaviors from "./Behaviors";
-import AppBar from "./AppBar";
 import { useState } from "react";
+import Constants from "expo-constants";
+
+import theme from "../theme";
+import AppBar from "./AppBar";
+import Home from "./Home";
+import Aspiration from "./Aspiration";
+import Behaviors from "./Behaviors";
 
 const Main = () => {
   const [aspiration, onChangeAspiration] = useState("MOOOOIN");
   return (
     <SafeAreaView style={styles.container}>
       <Routes>
-        <Route path="/" element={<LessonList />} exact />
+        <Route path="/" element={<Home />} exact />
         <Route
           path="/aspiration"
           element={
@@ -27,7 +28,7 @@ const Main = () => {
         <Route path="/behaviors" element={<Behaviors />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      <AppBar style={styles.bottomCenter} />
+      <AppBar />
     </SafeAreaView>
   );
 };
@@ -37,7 +38,7 @@ export default Main;
 const styles = StyleSheet.create({
   container: {
     marginTop: Constants.statusBarHeight,
-    padding: theme.spacing.large,
+    padding: theme.spacing.xlarge,
     backgroundColor: theme.colors.background,
     display: "flex",
     justifyContent: "space-between",
