@@ -1,6 +1,7 @@
-import { StyleSheet, SafeAreaView, Text } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
 import { Route, Routes, Navigate } from "react-router-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Constants from "expo-constants";
 
 import theme from "../theme";
@@ -8,23 +9,31 @@ import AppBar from "./AppBar";
 import Home from "./Home";
 import Aspiration from "./Aspiration";
 import Behaviors from "./Behaviors";
+import Text from "./Text";
 
 const Main = () => {
-  const [aspiration, onChangeAspiration] = useState("MOOOOIN");
+  const [users, setUsers] = useState([]);
+  const [aspirations, setAspirations] = useState();
+
+  useEffect(() => {
+    console.log("EFFEEEEEKKKKKTTT");
+    axios.get("http://192.168.2.134:3001/api/aspirations").then((response) => {
+      setAspirations(response.data);
+    });
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
+      {aspirations.map((aspiration) => {
+        return (
+          <Text key={aspiration.id}>
+            {aspiration.content} by {aspiration.user.name}
+          </Text>
+        );
+      })}
       <Routes>
         <Route path="/" element={<Home />} exact />
-        <Route
-          path="/aspiration"
-          element={
-            <Aspiration
-              aspiration={aspiration}
-              onChangeAspiration={onChangeAspiration}
-            />
-          }
-          exact
-        />
+        <Route path="/aspiration" element={<Aspiration />} exact />
         <Route path="/behaviors" element={<Behaviors />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

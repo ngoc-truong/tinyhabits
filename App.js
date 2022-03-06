@@ -1,8 +1,6 @@
 import Main from "./src/components/Main";
 import { NativeRouter } from "react-router-native";
-import { View, Text, StyleSheet } from "react-native";
 import AppLoading from "expo-app-loading";
-// import { useFonts, JosefinSans_700Bold } from "@expo-google-fonts/josefin-sans";
 import { useFonts } from "expo-font";
 
 const App = () => {
