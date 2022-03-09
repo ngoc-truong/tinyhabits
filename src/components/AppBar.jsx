@@ -6,7 +6,6 @@ const AppBar = () => {
     <View>
       <ScrollView horizontal>
         <AppTab link="/" label="Home"></AppTab>
-        <AppTab link="/aspiration" label="Aspiration"></AppTab>
         <AppTab link="/behaviors" label="Behaviors"></AppTab>
       </ScrollView>
     </View>

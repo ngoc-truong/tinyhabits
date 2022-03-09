@@ -4,14 +4,18 @@ import AspirationCard from "./AspirationCard";
 import BehaviorCard from "./BehaviorCard";
 import Text from "./Text";
 import Button from "./Button";
+import { useParams } from "react-router-native";
 
-const Aspiration = ({ aspiration, onChangeAspiration }) => {
+const Aspiration = ({ aspirations, onChangeAspiration }) => {
+  const id = useParams().id;
+  const aspiration = aspirations.find((a) => a.id === Number(id));
+
   return (
     <View>
       <Text margin="xlarge" category="h5">
         Aspiration
       </Text>
-      <AspirationCard />
+      <AspirationCard content={aspiration.content} />
       <Text margin="medium" category="h5">
         Behaviors
       </Text>

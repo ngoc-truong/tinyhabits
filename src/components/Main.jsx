@@ -9,14 +9,12 @@ import AppBar from "./AppBar";
 import Home from "./Home";
 import Aspiration from "./Aspiration";
 import Behaviors from "./Behaviors";
-import Text from "./Text";
 
 const Main = () => {
   const [users, setUsers] = useState([]);
   const [aspirations, setAspirations] = useState();
 
   useEffect(() => {
-    console.log("EFFEEEEEKKKKKTTT");
     axios.get("http://192.168.2.134:3001/api/aspirations").then((response) => {
       setAspirations(response.data);
     });
@@ -24,16 +22,13 @@ const Main = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {aspirations.map((aspiration) => {
-        return (
-          <Text key={aspiration.id}>
-            {aspiration.content} by {aspiration.user.name}
-          </Text>
-        );
-      })}
       <Routes>
-        <Route path="/" element={<Home />} exact />
-        <Route path="/aspiration" element={<Aspiration />} exact />
+        <Route path="/" element={<Home aspirations={aspirations} />} exact />
+        <Route
+          path="/aspiration/:id"
+          element={<Aspiration aspirations={aspirations} />}
+          exact
+        />
         <Route path="/behaviors" element={<Behaviors />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
