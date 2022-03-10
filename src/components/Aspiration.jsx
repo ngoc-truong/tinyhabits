@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import theme from "../theme";
 import AspirationCard from "./AspirationCard";
 import BehaviorCard from "./BehaviorCard";
@@ -6,14 +6,17 @@ import Text from "./Text";
 import Button from "./Button";
 import { useParams } from "react-router-native";
 
-const Aspiration = ({ aspirations, onChangeAspiration }) => {
+const Aspiration = ({ aspirations }) => {
   const id = useParams().id;
   const aspiration = aspirations.find((a) => a.id === Number(id));
 
+  const renderBehavior = ({ behavior }) => (
+    <BehaviorCard text={behavior.content} />
+  );
   return (
     <View>
       <Text margin="xlarge" category="h5">
-        Aspiration
+        Aspiration | AND THE ID is {id}
       </Text>
       <AspirationCard content={aspiration.content} />
       <Text margin="medium" category="h5">
@@ -22,9 +25,11 @@ const Aspiration = ({ aspirations, onChangeAspiration }) => {
       <Text margin="xlarge">
         Think of all behaviors which get you closer to your aspiration.
       </Text>
-      <BehaviorCard text="I will program for 20min each day." />
-      <BehaviorCard text="I will ..." />
-      <BehaviorCard text="I will ..." />
+
+      {aspiration.behaviors.map((behavior) => {
+        return <BehaviorCard text={behavior.content} />;
+      })}
+
       <Button label="Evaluate behaviors" />
     </View>
   );

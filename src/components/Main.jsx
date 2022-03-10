@@ -12,7 +12,7 @@ import Behaviors from "./Behaviors";
 
 const Main = () => {
   const [users, setUsers] = useState([]);
-  const [aspirations, setAspirations] = useState();
+  const [aspirations, setAspirations] = useState([]);
 
   useEffect(() => {
     axios.get("http://192.168.2.134:3001/api/aspirations").then((response) => {
@@ -22,6 +22,8 @@ const Main = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <AppBar />
+
       <Routes>
         <Route path="/" element={<Home aspirations={aspirations} />} exact />
         <Route
@@ -32,7 +34,6 @@ const Main = () => {
         <Route path="/behaviors" element={<Behaviors />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      <AppBar />
     </SafeAreaView>
   );
 };
