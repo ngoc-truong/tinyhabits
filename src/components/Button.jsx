@@ -12,7 +12,7 @@ const Button = ({ label, type, link }) => {
       end={{ x: 1.0, y: 0.5 }}
       colors={["rgba(0, 173, 150, 1.0)", "rgba(40, 22, 101, 0.8)"]}
     >
-      <Pressable>
+      <Pressable onPress={() => alert("Moin")}>
         <Text style={styles.text} category="button">
           {label}
         </Text>

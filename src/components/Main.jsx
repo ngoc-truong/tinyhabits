@@ -9,9 +9,10 @@ import AppBar from "./AppBar";
 import Home from "./Home";
 import Aspiration from "./Aspiration";
 import Behaviors from "./Behaviors";
+import Login from "./Login";
 
 const Main = () => {
-  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState("");
   const [aspirations, setAspirations] = useState([]);
 
   useEffect(() => {
@@ -25,7 +26,12 @@ const Main = () => {
       <AppBar />
 
       <Routes>
-        <Route path="/" element={<Home aspirations={aspirations} />} exact />
+        <Route
+          path="/"
+          element={<Login user={user} setUser={setUser} />}
+          exact
+        />
+        {/* <Route path="/" element={<Home aspirations={aspirations} />} exact /> */}
         <Route
           path="/aspiration/:id"
           element={<Aspiration aspirations={aspirations} />}
