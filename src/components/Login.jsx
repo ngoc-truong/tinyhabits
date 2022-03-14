@@ -7,26 +7,21 @@ const baseUrl = "/api/login";
 
 // import Button from "./Button";
 
-const Login = ({ user, setUser }) => {
+const Login = ({ setUser }) => {
   const handleLogin = async (values) => {
     try {
-      console.log(
-        `This is what I am sending: ${values.username} ${values.password}`
-      );
       const user = await axios.post(
         "http://192.168.2.134:3001/api/login",
         values
       );
       console.log(user.data);
-      setUser(user);
+      setUser(user.data);
     } catch (exception) {
-      console.log(exception);
-      console.log("Wrong credentials");
+      console.log(`Something went wrong: ${exception}`);
     }
   };
   return (
     <>
-      <Text>Moin {user.username}</Text>
       <Formik
         initialValues={{ username: "", password: "" }}
         onSubmit={(values) => handleLogin(values)}

@@ -5,11 +5,11 @@ import AspirationCard from "./AspirationCard";
 import AspirationForm from "./AspirationForm";
 import Button from "./Button";
 
-const Home = ({ aspirations }) => {
+const Home = ({ aspirations, user }) => {
   return (
     <View>
       <Text margin="medium" category="h5">
-        Howdy, Ngoc
+        Howdy, {user.username}
       </Text>
       <Text style={styles.third} margin="xlarge">
         I'm so proud of you that you will follow your aspirations.

@@ -6,6 +6,7 @@ This app is build with React Native.
 
 ToDo:
 
-- Login window
+- Only show data from logged in user
+  ...
 - Create a form for aspirations
 - Make saving to database possible

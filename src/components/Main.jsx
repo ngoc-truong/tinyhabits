@@ -1,5 +1,5 @@
 import { StyleSheet, SafeAreaView } from "react-native";
-import { Route, Routes, Navigate } from "react-router-native";
+import { Route, Routes, Navigate, Redirect } from "react-router-native";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Constants from "expo-constants";
@@ -10,33 +10,53 @@ import Home from "./Home";
 import Aspiration from "./Aspiration";
 import Behaviors from "./Behaviors";
 import Login from "./Login";
+import Text from "./Text";
 
 const Main = () => {
   const [user, setUser] = useState("");
+  const [userData, setUserData] = useState([]);
   const [aspirations, setAspirations] = useState([]);
 
+  // This should actually be gone
   useEffect(() => {
     axios.get("http://192.168.2.134:3001/api/aspirations").then((response) => {
       setAspirations(response.data);
     });
   }, []);
 
+  //After user is logged in, get user data
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(`http://192.168.2.134:3001/api/users/${user.id}`)
+        .then((response) => {
+          setUserData(response.data);
+          console.log(response.data);
+        });
+    }
+  }, [user]);
+
   return (
     <SafeAreaView style={styles.container}>
-      <AppBar />
-
+      <AppBar setUser={setUser} />
       <Routes>
-        <Route
-          path="/"
-          element={<Login user={user} setUser={setUser} />}
-          exact
-        />
-        {/* <Route path="/" element={<Home aspirations={aspirations} />} exact /> */}
-        <Route
+        {user && userData ? (
+          <Route
+            path="/"
+            // Here: instead of aspirations it should be userData.aspirations, but it gives me an undefined error all the time!
+            element={<Home aspirations={aspirations} user={user} />}
+            exact
+          />
+        ) : (
+          <Route path="/" element={<Login setUser={setUser} />} exact />
+        )}
+
+        {/* <Route
           path="/aspiration/:id"
           element={<Aspiration aspirations={aspirations} />}
           exact
-        />
+        /> */}
+        <Route path="/home" element={<Home />} exact />
         <Route path="/behaviors" element={<Behaviors />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
