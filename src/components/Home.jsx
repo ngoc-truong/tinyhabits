@@ -16,15 +16,19 @@ const Home = ({ aspirations, user }) => {
       </Text>
       <AspirationForm />
 
-      {aspirations.map((aspiration) => {
-        return (
-          <Pressable key={aspiration.id}>
-            <Link to={`/aspiration/${aspiration.id}`}>
-              <AspirationCard content={aspiration.content} />
-            </Link>
-          </Pressable>
-        );
-      })}
+      {aspirations ? (
+        aspirations.map((aspiration) => {
+          return (
+            <Pressable key={aspiration.id}>
+              <Link to={`/aspiration/${aspiration.id}`}>
+                <AspirationCard content={aspiration.content} />
+              </Link>
+            </Pressable>
+          );
+        })
+      ) : (
+        <Text></Text>
+      )}
 
       <Button label="Add aspiration" />
     </View>

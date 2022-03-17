@@ -15,17 +15,8 @@ import Text from "./Text";
 const Main = () => {
   const [user, setUser] = useState("");
   const [userData, setUserData] = useState([]);
-  const [aspirations, setAspirations] = useState([]);
 
-  // This should actually be gone
-  useEffect(() => {
-    axios.get("http://192.168.2.134:3001/api/aspirations").then((response) => {
-      setAspirations(response.data);
-    });
-  }, []);
-
-  //After user is logged in, get user data
-  useEffect(() => {
+  const fetchUserData = () => {
     if (user) {
       axios
         .get(`http://192.168.2.134:3001/api/users/${user.id}`)
@@ -34,6 +25,11 @@ const Main = () => {
           console.log(response.data);
         });
     }
+  };
+
+  //After user is logged in, get user data
+  useEffect(() => {
+    fetchUserData();
   }, [user]);
 
   return (
@@ -44,7 +40,7 @@ const Main = () => {
           <Route
             path="/"
             // Here: instead of aspirations it should be userData.aspirations, but it gives me an undefined error all the time!
-            element={<Home aspirations={aspirations} user={user} />}
+            element={<Home aspirations={userData.aspirations} user={user} />}
             exact
           />
         ) : (
