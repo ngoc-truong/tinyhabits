@@ -6,6 +6,7 @@ import Constants from "expo-constants";
 
 import theme from "../theme";
 import AppBar from "../components/AppBar";
+import Aspiration from "../components/Aspiration";
 import Home from "./Home";
 import Behaviors from "./Behaviors";
 import Login from "./Login";
@@ -20,7 +21,6 @@ const Main = () => {
         .get(`http://192.168.2.134:3001/api/users/${user.id}`)
         .then((response) => {
           setUserData(response.data);
-          console.log(response.data);
         });
     }
   };
@@ -28,8 +28,10 @@ const Main = () => {
   //After user is logged in, get user data
   useEffect(() => {
     fetchUserData();
+    console.log("Fetching user data.");
   }, [user]);
 
+  console.log("Rendering");
   return (
     <SafeAreaView style={styles.container}>
       <AppBar setUser={setUser} />
@@ -37,7 +39,6 @@ const Main = () => {
         {user && userData ? (
           <Route
             path="/"
-            // Here: instead of aspirations it should be userData.aspirations, but it gives me an undefined error all the time!
             element={<Home aspirations={userData.aspirations} user={user} />}
             exact
           />
@@ -45,11 +46,11 @@ const Main = () => {
           <Route path="/" element={<Login setUser={setUser} />} exact />
         )}
 
-        {/* <Route
+        <Route
           path="/aspiration/:id"
-          element={<Aspiration aspirations={aspirations} />}
+          element={<Aspiration aspirations={userData.aspirations} />}
           exact
-        /> */}
+        />
         <Route path="/home" element={<Home />} exact />
         <Route path="/behaviors" element={<Behaviors />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />

@@ -14,7 +14,6 @@ const Login = ({ setUser }) => {
         "http://192.168.2.134:3001/api/login",
         values
       );
-      console.log(user.data);
       setUser(user.data);
     } catch (exception) {
       console.log(`Something went wrong: ${exception}`);

@@ -13,10 +13,11 @@ const Aspiration = ({ aspirations }) => {
   const renderBehavior = ({ behavior }) => (
     <BehaviorCard text={behavior.content} />
   );
+
   return (
     <View>
       <Text margin="xlarge" category="h5">
-        Aspiration | AND THE ID is {id}
+        Aspiration | Id: {id}
       </Text>
       <AspirationCard content={aspiration.content} />
       <Text margin="medium" category="h5">
@@ -27,7 +28,7 @@ const Aspiration = ({ aspirations }) => {
       </Text>
 
       {aspiration.behaviors.map((behavior) => {
-        return <BehaviorCard text={behavior.content} />;
+        return <BehaviorCard key={behavior.id} text={behavior.content} />;
       })}
 
       <Button label="Evaluate behaviors" />

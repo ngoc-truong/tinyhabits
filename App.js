@@ -1,4 +1,4 @@
-import Main from "./src/components/Main";
+import Main from "./src/screens/Main";
 import { NativeRouter } from "react-router-native";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
