@@ -9,3 +9,4 @@ ToDo:
 - On click on one aspiration, show the aspiration + its behaviors
 - Create a form for aspirations
 - Make saving to database possible
+- Error messages when server is down

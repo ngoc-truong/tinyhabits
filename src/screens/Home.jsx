@@ -1,9 +1,9 @@
 import { View, StyleSheet, Pressable } from "react-native";
 import { Link } from "react-router-native";
-import Text from "./Text";
-import AspirationCard from "./AspirationCard";
-import AspirationForm from "./AspirationForm";
-import Button from "./Button";
+import Text from "../components/Text";
+import AspirationCard from "../components/AspirationCard";
+import AspirationForm from "../components/AspirationForm";
+import Button from "../components/Button";
 
 const Home = ({ aspirations, user }) => {
   return (

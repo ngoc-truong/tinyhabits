@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput, View, Button } from "react-native";
-import Text from "./Text";
+import Text from "../components/Text";
 import { Formik } from "formik";
 import theme from "../theme";
 import axios from "axios";

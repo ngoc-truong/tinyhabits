@@ -5,12 +5,10 @@ import axios from "axios";
 import Constants from "expo-constants";
 
 import theme from "../theme";
-import AppBar from "./AppBar";
+import AppBar from "../components/AppBar";
 import Home from "./Home";
-import Aspiration from "./Aspiration";
 import Behaviors from "./Behaviors";
 import Login from "./Login";
-import Text from "./Text";
 
 const Main = () => {
   const [user, setUser] = useState("");
