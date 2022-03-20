@@ -2,23 +2,20 @@ import { StyleSheet, TextInput, View, Button } from "react-native";
 import Text from "../components/Text";
 import { Formik } from "formik";
 import theme from "../theme";
-import axios from "axios";
-const baseUrl = "/api/login";
-
-// import Button from "./Button";
+import loginService from "../services/login";
+import aspirationService from "../services/aspiration";
 
 const Login = ({ setUser }) => {
-  const handleLogin = async (values) => {
+  const handleLogin = async (credentials) => {
     try {
-      const user = await axios.post(
-        "http://192.168.2.134:3001/api/login",
-        values
-      );
-      setUser(user.data);
+      const user = await loginService.login(credentials);
+      aspirationService.setToken(user.token);
+      setUser(user);
     } catch (exception) {
       console.log(`Something went wrong: ${exception}`);
     }
   };
+
   return (
     <>
       <Formik

@@ -1,28 +1,38 @@
-import { StyleSheet, TextInput, View, Pressable } from "react-native";
+import { StyleSheet, TextInput, View, Pressable, Button } from "react-native";
 import { useState } from "react";
 import theme from "../theme";
 import Text from "./Text";
-import Button from "./Button";
+import { Formik } from "formik";
+import aspirationService from "../services/aspiration";
 
 const AspirationForm = () => {
-  const [aspiration, setAspiration] = useState("");
-
-  const onChangeText = (value) => {
-    setAspiration(value);
+  const addAspiration = async (values) => {
+    const aspirationObject = {
+      content: values.aspiration,
+    };
+    const returnedAspiration = await aspirationService.create(aspirationObject);
+    // Hier muss ich noch setUserData oder so machen, damit die Seite neu rendert
   };
 
   return (
-    <View>
-      <Text>Enter your aspiration</Text>
-      <TextInput
-        style={styles.inputField}
-        onChangeText={onChangeText}
-        value={aspiration}
-        placeholder="Aspiration"
-      />
-      <Text>What you've typed: {aspiration}</Text>
-      <Button label="Add aspiration"></Button>
-    </View>
+    <Formik
+      initialValues={{ aspiration: "" }}
+      onSubmit={(values) => addAspiration(values)}
+    >
+      {({ handleChange, handleBlur, handleSubmit, values }) => (
+        <View>
+          <Text>Aspiration</Text>
+          <TextInput
+            onChangeText={handleChange("aspiration")}
+            onBlur={handleBlur("aspiration")}
+            value={values.aspiration}
+            style={styles.inputField}
+          />
+
+          <Button onPress={handleSubmit} title="Add aspiration" />
+        </View>
+      )}
+    </Formik>
   );
 };
 

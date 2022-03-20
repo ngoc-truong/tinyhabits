@@ -10,28 +10,28 @@ import Aspiration from "../components/Aspiration";
 import Home from "./Home";
 import Behaviors from "./Behaviors";
 import Login from "./Login";
+import userService from "../services/user";
 
 const Main = () => {
   const [user, setUser] = useState("");
   const [userData, setUserData] = useState([]);
 
-  const fetchUserData = () => {
+  const fetchUserData = async () => {
     if (user) {
-      axios
-        .get(`http://192.168.2.134:3001/api/users/${user.id}`)
-        .then((response) => {
-          setUserData(response.data);
-        });
+      try {
+        const data = await userService.getUserData(user);
+        setUserData(data);
+      } catch (exception) {
+        console.log("Could not get user data");
+      }
     }
   };
 
   //After user is logged in, get user data
   useEffect(() => {
     fetchUserData();
-    console.log("Fetching user data.");
   }, [user]);
 
-  console.log("Rendering");
   return (
     <SafeAreaView style={styles.container}>
       <AppBar setUser={setUser} />
