@@ -11,3 +11,4 @@ ToDo:
 - Make saving to database possible
 - Error messages when server is down
 - When logged out, redirect to login window
+- Hide logout button when not logged in

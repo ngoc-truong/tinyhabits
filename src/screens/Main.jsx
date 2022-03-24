@@ -36,26 +36,28 @@ const Main = () => {
       <AppBar setUser={setUser} />
       <Routes>
         {user && aspirations ? (
-          <Route
-            path="/"
-            element={
-              <Home
-                setAspirations={setAspirations}
-                aspirations={aspirations}
-                user={user}
-              />
-            }
-            exact
-          />
+          <>
+            <Route
+              path="/"
+              element={
+                <Home
+                  setAspirations={setAspirations}
+                  aspirations={aspirations}
+                  user={user}
+                />
+              }
+              exact
+            />
+            <Route
+              path="/aspiration/:id"
+              element={<Aspiration aspirations={aspirations} />}
+              exact
+            />
+          </>
         ) : (
           <Route path="/" element={<Login setUser={setUser} />} exact />
         )}
 
-        <Route
-          path="/aspiration/:id"
-          element={<Aspiration aspirations={aspirations} />}
-          exact
-        />
         <Route path="/home" element={<Home />} exact />
         <Route path="/behaviors" element={<Behaviors />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
