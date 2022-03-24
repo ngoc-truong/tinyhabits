@@ -1,7 +1,6 @@
 import { StyleSheet, SafeAreaView } from "react-native";
 import { Route, Routes, Navigate, Redirect } from "react-router-native";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Constants from "expo-constants";
 
 import theme from "../theme";
@@ -14,13 +13,13 @@ import userService from "../services/user";
 
 const Main = () => {
   const [user, setUser] = useState("");
-  const [userData, setUserData] = useState([]);
+  const [aspirations, setAspirations] = useState([]);
 
   const fetchUserData = async () => {
     if (user) {
       try {
         const data = await userService.getUserData(user);
-        setUserData(data);
+        setAspirations(data.aspirations);
       } catch (exception) {
         console.log("Could not get user data");
       }
@@ -36,10 +35,16 @@ const Main = () => {
     <SafeAreaView style={styles.container}>
       <AppBar setUser={setUser} />
       <Routes>
-        {user && userData ? (
+        {user && aspirations ? (
           <Route
             path="/"
-            element={<Home aspirations={userData.aspirations} user={user} />}
+            element={
+              <Home
+                setAspirations={setAspirations}
+                aspirations={aspirations}
+                user={user}
+              />
+            }
             exact
           />
         ) : (
@@ -48,7 +53,7 @@ const Main = () => {
 
         <Route
           path="/aspiration/:id"
-          element={<Aspiration aspirations={userData.aspirations} />}
+          element={<Aspiration aspirations={aspirations} />}
           exact
         />
         <Route path="/home" element={<Home />} exact />

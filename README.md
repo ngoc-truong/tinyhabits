@@ -6,6 +6,8 @@ This app is build with React Native.
 
 ToDo:
 
-- Create a form for aspirations
+- Delete aspirations + behaviors which belong to aspiration
+- Update state data (aspiration data) so that react renders
 - Make saving to database possible
 - Error messages when server is down
+- When logged out, redirect to login window

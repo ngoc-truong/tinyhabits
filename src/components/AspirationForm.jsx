@@ -5,13 +5,13 @@ import Text from "./Text";
 import { Formik } from "formik";
 import aspirationService from "../services/aspiration";
 
-const AspirationForm = () => {
+const AspirationForm = ({ aspirations, setAspirations }) => {
   const addAspiration = async (values) => {
     const aspirationObject = {
       content: values.aspiration,
     };
     const returnedAspiration = await aspirationService.create(aspirationObject);
-    // Hier muss ich noch setUserData oder so machen, damit die Seite neu rendert
+    setAspirations([...aspirations, returnedAspiration]);
   };
 
   return (

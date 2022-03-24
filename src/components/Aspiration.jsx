@@ -3,16 +3,11 @@ import theme from "../theme";
 import AspirationCard from "./AspirationCard";
 import BehaviorCard from "./BehaviorCard";
 import Text from "./Text";
-import Button from "./Button";
 import { useParams } from "react-router-native";
 
 const Aspiration = ({ aspirations }) => {
   const id = useParams().id;
   const aspiration = aspirations.find((a) => a.id === Number(id));
-
-  const renderBehavior = ({ behavior }) => (
-    <BehaviorCard text={behavior.content} />
-  );
 
   return (
     <View>
@@ -30,8 +25,6 @@ const Aspiration = ({ aspirations }) => {
       {aspiration.behaviors.map((behavior) => {
         return <BehaviorCard key={behavior.id} text={behavior.content} />;
       })}
-
-      <Button label="Evaluate behaviors" />
     </View>
   );
 };
