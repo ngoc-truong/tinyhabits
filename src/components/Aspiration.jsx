@@ -2,6 +2,7 @@ import { View, StyleSheet, FlatList } from "react-native";
 import theme from "../theme";
 import AspirationCard from "./AspirationCard";
 import BehaviorCard from "./BehaviorCard";
+import BehaviorForm from "./BehaviorForm";
 import Text from "./Text";
 import { useParams } from "react-router-native";
 
@@ -21,10 +22,15 @@ const Aspiration = ({ aspirations }) => {
       <Text margin="xlarge">
         Think of all behaviors which get you closer to your aspiration.
       </Text>
+      <BehaviorForm aspirationId={id} />
 
-      {aspiration.behaviors.map((behavior) => {
-        return <BehaviorCard key={behavior.id} text={behavior.content} />;
-      })}
+      {aspiration.behaviors ? (
+        aspiration.behaviors.map((behavior) => {
+          return <BehaviorCard key={behavior.id} text={behavior.content} />;
+        })
+      ) : (
+        <Text>This aspiration does not have any behaviors.</Text>
+      )}
     </View>
   );
 };
