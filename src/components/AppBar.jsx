@@ -3,9 +3,10 @@ import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import AppTab from "./AppTab";
 import Text from "./Text";
 
-const AppBar = ({ setUser }) => {
+const AppBar = ({ loggedIn, setLoggedIn, setUser }) => {
   const logout = () => {
     setUser("");
+    setLoggedIn(false);
   };
 
   return (
@@ -13,9 +14,14 @@ const AppBar = ({ setUser }) => {
       <ScrollView horizontal>
         <AppTab link="/" label="Home"></AppTab>
         <AppTab link="/behaviors" label="Behaviors"></AppTab>
-        <Pressable onPress={logout}>
-          <Text>Log Out</Text>
-        </Pressable>
+
+        {loggedIn ? (
+          <Pressable onPress={logout}>
+            <Text>Log Out</Text>
+          </Pressable>
+        ) : (
+          <Text></Text>
+        )}
       </ScrollView>
     </View>
   );

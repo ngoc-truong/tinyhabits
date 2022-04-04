@@ -12,9 +12,9 @@ const Aspiration = ({ aspirations }) => {
   return (
     <View>
       <Text margin="xlarge" category="h5">
-        Aspiration | Id: {id}
+        Aspiration
       </Text>
-      <AspirationCard content={aspiration.content} />
+      <AspirationCard id={id} content={aspiration.content} />
       <Text margin="medium" category="h5">
         Behaviors
       </Text>

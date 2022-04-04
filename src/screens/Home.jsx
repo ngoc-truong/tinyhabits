@@ -1,4 +1,5 @@
 import { View, StyleSheet, Pressable } from "react-native";
+import { useState } from "react";
 import { Link } from "react-router-native";
 import Text from "../components/Text";
 import AspirationCard from "../components/AspirationCard";
@@ -23,7 +24,12 @@ const Home = ({ setAspirations, aspirations, user }) => {
           return (
             <Pressable key={aspiration.id}>
               <Link to={`/aspiration/${aspiration.id}`}>
-                <AspirationCard content={aspiration.content} />
+                <AspirationCard
+                  id={aspiration.id}
+                  content={aspiration.content}
+                  aspirations={aspirations}
+                  setAspirations={setAspirations}
+                />
               </Link>
             </Pressable>
           );

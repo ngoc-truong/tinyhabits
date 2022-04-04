@@ -13,6 +13,7 @@ import userService from "../services/user";
 
 const Main = () => {
   const [user, setUser] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
   const [aspirations, setAspirations] = useState([]);
 
   const fetchUserData = async () => {
@@ -33,7 +34,7 @@ const Main = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <AppBar setUser={setUser} />
+      <AppBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUser={setUser} />
       <Routes>
         {user && aspirations ? (
           <>
@@ -55,7 +56,11 @@ const Main = () => {
             />
           </>
         ) : (
-          <Route path="/" element={<Login setUser={setUser} />} exact />
+          <Route
+            path="/"
+            element={<Login setUser={setUser} setLoggedIn={setLoggedIn} />}
+            exact
+          />
         )}
 
         <Route path="/home" element={<Home />} exact />

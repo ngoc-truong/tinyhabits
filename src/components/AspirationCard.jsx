@@ -1,8 +1,18 @@
 import Text from "./Text";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import theme from "../theme";
+import aspirationService from "../services/aspiration";
 
-const AspirationCard = ({ content }) => {
+const AspirationCard = ({ aspirations, setAspirations, content, id }) => {
+  const deleteAspiration = async () => {
+    const status = await aspirationService.deleteAspiration(id);
+    const newAspirationArray = aspirations.filter(
+      (aspiration) => aspiration.id !== id
+    );
+    setAspirations(newAspirationArray);
+    console.log(`Successfully deleted: ${status}`);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.overline} category="overline">
@@ -11,6 +21,10 @@ const AspirationCard = ({ content }) => {
       <Text style={styles.text} category="h6">
         {content}
       </Text>
+      <Text>{id}</Text>
+      <Pressable onPress={deleteAspiration}>
+        <Text>Delete</Text>
+      </Pressable>
     </View>
   );
 };

@@ -5,12 +5,13 @@ import theme from "../theme";
 import loginService from "../services/login";
 import aspirationService from "../services/aspiration";
 
-const Login = ({ setUser }) => {
+const Login = ({ setLoggedIn, setUser }) => {
   const handleLogin = async (credentials) => {
     try {
       const user = await loginService.login(credentials);
       aspirationService.setToken(user.token);
       setUser(user);
+      setLoggedIn(true);
     } catch (exception) {
       console.log(`Something went wrong: ${exception}`);
     }

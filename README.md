@@ -6,9 +6,5 @@ This app is build with React Native.
 
 ToDo:
 
-- Delete aspirations + behaviors which belong to aspiration
-- Update state data (aspiration data) so that react renders
-- Make saving to database possible
+- Re-render aspirations after deletion
 - Error messages when server is down
-- When logged out, redirect to login window
-- Hide logout button when not logged in

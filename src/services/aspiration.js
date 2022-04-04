@@ -16,4 +16,9 @@ const create = async (newAspiration) => {
   return response.data;
 };
 
-export default { create, setToken };
+const deleteAspiration = async (id) => {
+  const response = await axios.delete(`${baseUrl}/${id}`);
+  return response.status;
+};
+
+export default { create, deleteAspiration, setToken };
