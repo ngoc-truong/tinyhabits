@@ -6,6 +6,7 @@ This app is build with React Native.
 
 ToDo:
 
+- After adding a behavior: Change state of behaviors
 - Ability to edit aspiration
 - After adding an aspiration, delete values.aspiration in TextInput
 - After adding an aspiration, show a message for successfull addition
